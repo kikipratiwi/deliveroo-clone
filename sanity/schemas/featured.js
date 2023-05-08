@@ -20,7 +20,7 @@ export default defineType({
     {
       name: 'restaurants',
       type: 'array',
-      title: 'Restaurant',
+      title: 'Restaurants',
       of: [{type: 'reference', to: [{type: 'restaurant'}]}],
     },
   ],
