@@ -88,7 +88,7 @@ export default function HomeScreen() {
                 <FeaturedRow
                     id="1234"
                     title="Tasty Discounts"
-                    description="Everryone's been enjoying these juicy discounts!"
+                    description="Everyone's been enjoying these juicy discounts!"
                 />
 
                 {/* Offers near you */}
