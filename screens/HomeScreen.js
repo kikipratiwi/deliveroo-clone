@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import {
     View,
     Text,
@@ -16,14 +16,28 @@ import {
 } from 'react-native-heroicons/outline';
 import Categories from '../components/Categories.js';
 import FeaturedRow from '../components/FeaturedRow.js';
+import sanityClient from '../sanity.js';
+import { GET_FEATURED } from '../queries';
 
 export default function HomeScreen() {
     const navigation = useNavigation();
+    const [featuredCategories, setFeaturedCategories] = useState([]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
+    }, []);
+
+    useEffect(() => {
+        sanityClient
+            .fetch(GET_FEATURED)
+            .then((data) => {
+                setFeaturedCategories(data);
+            })
+            .catch((err) => {
+                console.error('error', err);
+            });
     }, []);
 
     return (
@@ -78,25 +92,19 @@ export default function HomeScreen() {
                 <Categories />
 
                 {/* Featured Rows */}
-                <FeaturedRow
-                    id="123"
-                    title="Featured"
-                    description="Paid placements from our partners"
-                />
-
-                {/* Tasty Discounts */}
-                <FeaturedRow
-                    id="1234"
-                    title="Tasty Discounts"
-                    description="Everyone's been enjoying these juicy discounts!"
-                />
-
-                {/* Offers near you */}
-                <FeaturedRow
-                    id="1235"
-                    title="Offers near you!"
-                    description="Why not support your local restaurant tonight!"
-                />
+                {featuredCategories.length > 0 &&
+                    featuredCategories.map(
+                        ({ _id: id, name, short_description }) => {
+                            return (
+                                <FeaturedRow
+                                    key={id}
+                                    id={id}
+                                    title={name}
+                                    description={short_description}
+                                />
+                            );
+                        },
+                    )}
             </ScrollView>
         </SafeAreaView>
     );
