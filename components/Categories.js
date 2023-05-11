@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 import CategoryCard from './CategoryCard';
+import sanityClient from '../sanity';
+import { GET_CATEGORY } from '../queries';
 
 export default function Categories() {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        sanityClient
+            .fetch(GET_CATEGORY)
+            .then((data) => {
+                setCategories(data);
+            })
+            .catch((err) => {
+                console.error('error ', err);
+            });
+    }, []);
+
     return (
         <ScrollView
             horizontal
@@ -10,34 +25,12 @@ export default function Categories() {
             contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
         >
             {/* CategoryCard */}
-            <CategoryCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing 1"
-            />
-            <CategoryCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing 2"
-            />
-            <CategoryCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing 3"
-            />
-            <CategoryCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing 3"
-            />
-            <CategoryCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing 3"
-            />
-            <CategoryCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing 3"
-            />
-            <CategoryCard
-                imgUrl="https://links.papareact.com/gn7"
-                title="Testing 3"
-            />
+            {categories.length > 0 &&
+                categories.map(({ _id, name, image: imgUrl }) => {
+                    return (
+                        <CategoryCard key={_id} imgUrl={imgUrl} title={name} />
+                    );
+                })}
         </ScrollView>
     );
 }
