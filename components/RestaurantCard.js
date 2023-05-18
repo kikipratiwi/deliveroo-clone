@@ -1,7 +1,11 @@
-import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { MapPinIcon } from 'react-native-heroicons/outline';
 import { StarIcon } from 'react-native-heroicons/solid';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+
+import RatingRow from './RatingRow';
+import LocationRow from './LocationRow';
 import { urlFor } from '../sanity';
 
 export default function RestaurantCard({
@@ -16,8 +20,26 @@ export default function RestaurantCard({
     long,
     lat,
 }) {
+    const navigation = useNavigation();
+
     return (
-        <TouchableOpacity className="bg-white mr-3 shadow">
+        <TouchableOpacity
+            className="bg-white mr-3 shadow"
+            onPress={() =>
+                navigation.navigate('Restaurant', {
+                    id,
+                    imgUrl,
+                    title,
+                    rating,
+                    genre,
+                    address,
+                    shortDescription,
+                    dishes,
+                    long,
+                    lat,
+                })
+            }
+        >
             <Image
                 source={{
                     uri: urlFor(imgUrl).url(),
@@ -28,20 +50,9 @@ export default function RestaurantCard({
             <View className="px-3 pb-4">
                 <Text className="font-bold text-lg pt-2">{title}</Text>
 
-                <View className="flex-row items-center space-x-1">
-                    <StarIcon color="green" opacity={0.5} size={22} />
-                    <Text className="text-xs text-gray-500">
-                        <Text className="text-green-500">{rating}</Text> .{' '}
-                        {genre}
-                    </Text>
-                </View>
+                <RatingRow rating={rating} genre={genre} />
 
-                <View className="flex-row items-center space-x-1">
-                    <MapPinIcon color="gray" opacity={0.4} size={22} />
-                    <Text className="text-xs text-gray-500">
-                        Nearby . {address}
-                    </Text>
-                </View>
+                <LocationRow address={address} />
             </View>
         </TouchableOpacity>
     );

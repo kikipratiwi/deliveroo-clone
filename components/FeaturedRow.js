@@ -40,7 +40,7 @@ export default function FeaturedRow({ id, title, description }) {
                         ({
                             _id,
                             image: imgUrl,
-                            title,
+                            name: title,
                             rating,
                             type: { name: genre },
                             address,
