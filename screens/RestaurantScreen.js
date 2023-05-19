@@ -99,6 +99,7 @@ export default function RestaurantScreen() {
                         ({ _id, name, short_description, price, image }) => (
                             <DishRow
                                 key={_id}
+                                id={_id}
                                 name={name}
                                 price={price}
                                 image={image}
