@@ -1,12 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import {
-    View,
-    Text,
-    SafeAreaView,
-    Image,
-    TextInput,
-    ScrollView,
-} from 'react-native';
+import { View, Text, SafeAreaView, Image, TextInput, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
     ChevronDownIcon,
@@ -52,16 +45,10 @@ export default function HomeScreen() {
                 />
 
                 <View className="flex-1">
-                    <Text className="font-bold text-gray-400 text-xs">
-                        Deliver Now!
-                    </Text>
+                    <Text className="font-bold text-gray-400 text-xs">Deliver Now!</Text>
                     <Text className="font-bold text-lg">
                         Current Location
-                        <ChevronDownIcon
-                            size={18}
-                            color="#00CCBB"
-                            style={{ marginLeft: 5 }}
-                        />
+                        <ChevronDownIcon size={18} color="#00CCBB" style={{ marginLeft: 5 }} />
                     </Text>
                 </View>
 
@@ -72,10 +59,7 @@ export default function HomeScreen() {
             <View className="flex-row items-center space-x-2 pb-2 mx-4">
                 <View className="flex-row space-x-2 flex-1 bg-gray-200 p-3">
                     <MagnifyingGlassIcon color="gray" size={20} />
-                    <TextInput
-                        placeholder="Restaurants and cuisines"
-                        keyboardType="default"
-                    />
+                    <TextInput placeholder="Restaurants and cuisines" keyboardType="default" />
                 </View>
 
                 <AdjustmentsVerticalIcon size={35} color="#00CCBB" />
@@ -93,18 +77,16 @@ export default function HomeScreen() {
 
                 {/* Featured Rows */}
                 {featuredCategories.length > 0 &&
-                    featuredCategories.map(
-                        ({ _id: id, name, short_description }) => {
-                            return (
-                                <FeaturedRow
-                                    key={id}
-                                    id={id}
-                                    title={name}
-                                    description={short_description}
-                                />
-                            );
-                        },
-                    )}
+                    featuredCategories.map(({ _id: id, name, short_description }) => {
+                        return (
+                            <FeaturedRow
+                                key={id}
+                                id={id}
+                                title={name}
+                                description={short_description}
+                            />
+                        );
+                    })}
             </ScrollView>
         </SafeAreaView>
     );

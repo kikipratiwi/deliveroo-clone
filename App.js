@@ -19,10 +19,7 @@ export default function App() {
                 <TailwindProvider>
                     <Stack.Navigator>
                         <Stack.Screen name="Home" component={HomeScreen} />
-                        <Stack.Screen
-                            name="Restaurant"
-                            component={RestaurantScreen}
-                        />
+                        <Stack.Screen name="Restaurant" component={RestaurantScreen} />
                     </Stack.Navigator>
                     <StatusBar style="auto" />
                 </TailwindProvider>

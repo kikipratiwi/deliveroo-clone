@@ -13,9 +13,7 @@ import {
 
 const DishRow = ({ id, name, shortDescription, price, image }) => {
     const [isPressed, setIsPressed] = useState(false);
-    const itemsLength = useSelector((state) =>
-        selectBasketItemsWithId(state, id),
-    )?.length;
+    const itemsLength = useSelector((state) => selectBasketItemsWithId(state, id))?.length;
     const dispatch = useDispatch();
 
     const addItemToBasket = () => {
@@ -31,17 +29,13 @@ const DishRow = ({ id, name, shortDescription, price, image }) => {
     return (
         <>
             <TouchableOpacity
-                className={`bg-white border p-4 border-gray-200 ${
-                    isPressed && 'border-b-0'
-                }`}
+                className={`bg-white border p-4 border-gray-200 ${isPressed && 'border-b-0'}`}
                 onPress={() => setIsPressed(!isPressed)}
             >
                 <View className="flex-row">
                     <View className="flex-1 pr-2">
                         <Text className="text-lg mb-1">{name}</Text>
-                        <Text className="text-gray-400">
-                            {shortDescription}
-                        </Text>
+                        <Text className="text-gray-400">{shortDescription}</Text>
                         <Text className="text-gray-600 mt-2">
                             <Currency quantity={price} currency="GBP" />
                         </Text>
@@ -65,10 +59,7 @@ const DishRow = ({ id, name, shortDescription, price, image }) => {
             {isPressed && (
                 <View className="bg-white px-4 pb-3">
                     <View className="flex-row items-center space-x-2">
-                        <TouchableOpacity
-                            onPress={removeItemFromBasket}
-                            disabled={itemsLength < 1}
-                        >
+                        <TouchableOpacity onPress={removeItemFromBasket} disabled={itemsLength < 1}>
                             <MinusCircleIcon
                                 color={itemsLength < 1 ? 'gray' : '#00CCBB'}
                                 size={40}

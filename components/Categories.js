@@ -27,9 +27,7 @@ export default function Categories() {
             {/* CategoryCard */}
             {categories.length > 0 &&
                 categories.map(({ _id, name, image: imgUrl }) => {
-                    return (
-                        <CategoryCard key={_id} imgUrl={imgUrl} title={name} />
-                    );
+                    return <CategoryCard key={_id} imgUrl={imgUrl} title={name} />;
                 })}
         </ScrollView>
     );
