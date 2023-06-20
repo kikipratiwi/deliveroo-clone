@@ -13,12 +13,34 @@ import RatingRow from '../components/RatingRow';
 
 import { urlFor } from '../sanity';
 import BasketIcon from '../components/BasketIcon';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { setRestaurant } from '../redux/reducer/restaurantSlice';
 
 export default function RestaurantScreen() {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+
     const {
         params: { id, imgUrl, title, rating, genre, address, shortDescription, dishes, long, lat },
     } = useRoute();
+
+    useEffect(() => {
+        dispatch(
+            setRestaurant({
+                id,
+                imgUrl,
+                title,
+                rating,
+                genre,
+                address,
+                shortDescription,
+                dishes,
+                long,
+                lat,
+            }),
+        );
+    }, [dispatch]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
