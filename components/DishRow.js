@@ -5,15 +5,12 @@ import Currency from 'react-currency-formatter';
 import React, { useState } from 'react';
 
 import { urlFor } from '../sanity';
-import {
-    addToBasket,
-    removeFromBasket,
-    selectBasketItemsWithId,
-} from '../redux/reducer/basketSlice';
+import { addToBasket, removeFromBasket, selectBasketItems } from '../redux/reducer/basketSlice';
 
 const DishRow = ({ id, name, shortDescription, price, image }) => {
     const [isPressed, setIsPressed] = useState(false);
-    const itemsLength = useSelector((state) => selectBasketItemsWithId(state, id))?.length;
+    const basketItems = useSelector((state) => selectBasketItems(state));
+    const itemsLength = basketItems.filter(({ id: basketId }) => basketId === id)?.length;
     const dispatch = useDispatch();
 
     const addItemToBasket = () => {
