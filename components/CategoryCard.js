@@ -1,5 +1,6 @@
-import React from 'react';
 import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import React from 'react';
+
 import { urlFor } from '../sanity';
 
 export default function CategoryCard({ imgUrl, title }) {

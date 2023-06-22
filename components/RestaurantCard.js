@@ -1,12 +1,10 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { MapPinIcon } from 'react-native-heroicons/outline';
-import { StarIcon } from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
-import RatingRow from './RatingRow';
-import LocationRow from './LocationRow';
 import { urlFor } from '../sanity';
+import LocationRow from './LocationRow';
+import RatingRow from './RatingRow';
 
 export default function RestaurantCard({
     id,

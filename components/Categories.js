@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+
+import { GET_CATEGORY } from '../queries';
 import CategoryCard from './CategoryCard';
 import sanityClient from '../sanity';
-import { GET_CATEGORY } from '../queries';
 
 export default function Categories() {
     const [categories, setCategories] = useState([]);

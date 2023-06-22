@@ -1,10 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useMemo } from 'react';
 import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 import { XCircleIcon } from 'react-native-heroicons/solid';
 import Currency from 'react-currency-formatter';
+import React, { useMemo } from 'react';
 
 import { selectRestaurant } from '../redux/reducer/restaurantSlice';
 import {

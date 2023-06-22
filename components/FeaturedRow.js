@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
-import RestaurantCard from './RestaurantCard';
+import { ScrollView, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+
 import { GET_FEATURED_RESTAURANT } from '../queries';
+import RestaurantCard from './RestaurantCard';
 import sanityClient from '../sanity';
 
 export default function FeaturedRow({ id, title, description }) {

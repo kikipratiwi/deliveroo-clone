@@ -1,10 +1,10 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Image } from 'react-native';
-import React from 'react';
+import { selectRestaurant } from '../redux/reducer/restaurantSlice';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-import { selectRestaurant } from '../redux/reducer/restaurantSlice';
+import { View, Text, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { XMarkIcon } from 'react-native-heroicons/solid';
 import * as Progress from 'react-native-progress';
+import React from 'react';
 
 import MapView, { Marker } from 'react-native-maps';
 

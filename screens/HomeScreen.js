@@ -1,16 +1,17 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { View, Text, SafeAreaView, Image, TextInput, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import {
-    ChevronDownIcon,
-    UserIcon,
     AdjustmentsVerticalIcon,
+    ChevronDownIcon,
     MagnifyingGlassIcon,
+    UserIcon,
 } from 'react-native-heroicons/outline';
+import { useNavigation } from '@react-navigation/native';
+import { View, Text, SafeAreaView, Image, TextInput, ScrollView } from 'react-native';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+
+import { GET_FEATURED } from '../queries';
 import Categories from '../components/Categories.js';
 import FeaturedRow from '../components/FeaturedRow.js';
 import sanityClient from '../sanity.js';
-import { GET_FEATURED } from '../queries';
 
 export default function HomeScreen() {
     const navigation = useNavigation();
