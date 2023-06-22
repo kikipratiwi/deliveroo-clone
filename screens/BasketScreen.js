@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
-import { ArrowLeftIcon, XCircleIcon } from 'react-native-heroicons/solid';
+import { XCircleIcon } from 'react-native-heroicons/solid';
 import Currency from 'react-currency-formatter';
 
 import { selectRestaurant } from '../redux/reducer/restaurantSlice';

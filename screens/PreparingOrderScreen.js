@@ -1,7 +1,8 @@
-import { View, Text, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import React, { useEffect } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { useNavigation } from '@react-navigation/native';
+import * as Progress from 'react-native-progress';
 
 export default function PreparingOrderScreen() {
     const navigation = useNavigation();
@@ -13,7 +14,7 @@ export default function PreparingOrderScreen() {
     }, []);
 
     return (
-        <SafeAreaView className="flex-1 justify-center items-center bg-[#04e3f3]">
+        <SafeAreaView className="flex-1 justify-center items-center bg-[#00CCBB]">
             <Animatable.Image
                 source={require('../assets/map.gif')}
                 animation="slideInUp"
@@ -28,6 +29,8 @@ export default function PreparingOrderScreen() {
             >
                 Waiting for Restaurant to accept your order!
             </Animatable.Text>
+
+            <Progress.Bar size={30} color="white" indeterminate={true} />
         </SafeAreaView>
     );
 }
